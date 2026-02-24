@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitación Virtual - Marzo 2026</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="sytle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+</head>
+
+<body>
+    <div class="wrap">
+
+        <!-- HERO -->
+        <header>
+            <div class="eyebrow">Seminarios e Institutos · Perú Norte</div>
+            <h1>Capacitación <span>Virtual</span></h1>
+            <p id="pEtiqueta" />
+            <div class="theme-badge" id="temaCapacitacion" />
+        </header>
+
+        <div class="divider"></div>
+
+        <!-- AGENDA -->
+        <section>
+            <div class="section-title">Agenda de Ponentes</div>
+            <div class="agenda-grid" id="agendaContainer"></div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- PROMISES + FORM -->
+        <div class="main-row" style="margin-top:50px;">
+
+            <!-- Promises -->
+            <div class="promises-card">
+                <div class="promises-hero">
+                    <div class="label">Las nuevas</div>
+                    <h2>promesas</h2>
+                    <h3>del presidente Oaks</h3>
+                </div>
+                <div class="promise-list">
+                    <div class="promise-group">
+                        <div class="promise-item">
+                            <div class="p-num">1</div>
+                            <div class="p-text"><strong>Aprender</strong> a distinguir la <u>verdad del error</u>.</div>
+                        </div>
+                        <div class="promise-item">
+                            <div class="p-num">2</div>
+                            <div class="p-text"><strong>Fortalecer</strong> su relación con el <u>Padre Celestial</u> y
+                                con su Hijo, <u>Jesucristo</u>.</div>
+                        </div>
+                        <div class="promise-item">
+                            <div class="p-num">3</div>
+                            <div class="p-text"><strong>Encontrar</strong> <u>dirección</u> y descubrir respuestas a las
+                                preguntas de la vida.</div>
+                        </div>
+                    </div>
+                    <div class="promise-group">
+                        <div class="promise-item">
+                            <div class="p-num">4</div>
+                            <div class="p-text"><strong>Conocer</strong> a otras personas que los ayuden a <u>avanzar
+                                    por la senda del convenio</u>.</div>
+                        </div>
+                        <div class="promise-item">
+                            <div class="p-num">5</div>
+                            <div class="p-text"><strong>Conocer</strong> personas con quienes puedan salir y
+                                <u>casarse</u>.
+                            </div>
+                        </div>
+                        <div class="promise-item">
+                            <div class="p-num">6</div>
+                            <div class="p-text"><strong>Prepararse</strong> para <u>amar</u> y liderar como el Salvador.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="form-card">
+                <h4>Registro de Participación</h4>
+                <p class="subtitle">Completa el formulario para confirmar tu asistencia a la capacitación.</p>
+                <form id="registroForm" class="form-grid">
+                    <div class="full">
+                        <label>Nombres y Apellidos</label>
+                        <input type="text" id="nombre" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Llamamiento</label>
+                        <div class="multi-select">
+                            <div class="select-box" onclick="toggleDropdown(this)">
+                                <span class="selected">Seleccione...</span>
+                                <div class="arrow">&#9662;</div>
+                            </div>
+                            <div class="checkbox-dropdown">
+                                <label><input type="checkbox" value="Maestro seminarios"> Maestro de seminarios</label>
+                                <label><input type="checkbox" value="Maestro de institutos"> Maestro de
+                                    institutos</label>
+                                <label><input type="checkbox" value="Supervisor de seminarios"> Supervisor de
+                                    seminarios</label>
+                                <label><input type="checkbox" value="Supervisor de institutos"> Supervisor de
+                                    institutos</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label>WhatsApp</label>
+                        <input type="tel" id="whatsapp" pattern="^9[0-9]{8}$" maxlength="9" placeholder="9XXXXXXXX"
+                            required oninvalid="this.setCustomValidity('Colocar un número correcto')"
+                            oninput="this.setCustomValidity('')">
+                    </div>
+                    <div>
+                        <label>Estaca</label>
+                        <select id="estaca" required>
+                            <option value="">Cargando...</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Coordinador</label>
+                        <select id="coordinador" required>
+                            <option value="">Cargando...</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Día de Capacitación</label>
+                        <select id="diaSel" required>
+                            <option value="">Cargando...</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Horario</label>
+                        <select id="horaSel" disabled>
+                            <option value="">Cargando...</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">✓ Confirmar Registro</button>
+                </form>
+            </div>
+
+        </div>
+
+        <footer>Seminarios e Institutos &mdash; Capacitación Virtual &mdash; Todos los derechos reservados
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js">
+    </script>
+    <script src="script.js"></script>
+
+
+
+</body>
+
+</html>
